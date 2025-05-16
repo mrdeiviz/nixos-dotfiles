@@ -140,7 +140,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrains Mono",
+    font="JetBrainsMonoNL Nerd Font",
     fontsize=14,
     padding=3,
 )
@@ -164,8 +164,23 @@ screens = [
                 # widget.StatusNotifier(),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Battery(
+    font='JetBrainsMonoNL Nerd Font',          # la proporción “propo” suele incluir todos los iconos
+    format='{char} {percent:2.0%}',
+    update_interval=30,
+    low_percentage=0.1,
+    low_foreground='FF0000',
+    # glifos limpios, sin \n:
+    charge_char='⚡',      # U+26A1 (rayo)
+    discharge_char='',   # U+F242 (battery-half)
+    empty_char='',       # U+F244 (battery-empty)
+    full_char='',        # U+F240 (battery-full)
+    not_charging_char='⏻', # U+23FB (power-symbol) o cámbialo por otro que tengas parcheado
+),
+
             ],
             24,
+            background='#282c34',
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
